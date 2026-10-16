@@ -1,0 +1,29 @@
+{
+  "name": "skribble-clone",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "predev": "node scripts/free-dev-port.mjs",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "node scripts/dev-server.mjs",
+    "dev:client": "npm run dev --workspace=client",
+    "build": "npm run build --workspace=client && npm run build --workspace=server",
+    "build:vercel": "npm run build --workspace=client",
+    "start": "npm run start --workspace=server"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "uuid": "^11.0.5",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3",
+    "@types/node": "^22.10.5"
+  }
+}
